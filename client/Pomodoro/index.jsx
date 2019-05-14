@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TimerEventEmitter from './timerEventEmitter';
-import { millisecondsToHumanReadableTime } from '../helpers';
+import { millisecondsToHumanReadableTime } from './helpers';
 import beep from './success.wav';
 
 const DEFAULT_BREAK_LENGTH_MN = 5;
