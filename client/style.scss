@@ -78,6 +78,18 @@ body {
   width: $timer-size;
 }
 
+.working {
+  color: lightblue;
+}
+
+.breaking {
+  color: lightcoral;
+}
+
+.off {
+  color: $color-secondary;
+}
+
 .length-control {
   &-block {
     display: inline-block;

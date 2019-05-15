@@ -180,7 +180,16 @@ class Pomodoro extends Component {
           increment={this.incrementBreak}
           decrement={this.decrementBreak}
         />
-        <div id="time-left" className="circle center">
+        <div
+          id="time-left"
+          className={`circle center ${
+            phase === 'work'
+              ? 'working'
+              : phase === 'break'
+              ? 'breaking'
+              : 'off'
+          }`}
+        >
           {secondsToHumanReadableTime(timeLeftInSeconds)}
         </div>
         <div id="timer-label">
