@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import TimerEventEmitter from './timerEventEmitter';
 import { millisecondsToHumanReadableTime } from './helpers';
+import { LengthControl } from './LengthControl';
+import { TimerControl } from './TimerControl';
 import beep from './success.wav';
 
 const DEFAULT_BREAK_LENGTH_MN = 5;
@@ -210,39 +212,26 @@ class Pomodoro extends Component {
     } = this.state;
 
     return (
-      <div>
-        <div id="break-label">Break Length</div>
-        <div id="break-length">{breakLengthInMinutes}</div>
-        <div id="session-label">Session Length</div>
-        <div id="session-length">{sessionLengthInMinutes}</div>
-        {phase === 'work' ? (
-          <div id="timer-label">Work Time!</div>
-        ) : phase === 'break' ? (
-          <div id="timer-label">Break Time!</div>
-        ) : (
-          <div id="timer-label">Off</div>
-        )}
-        <button id="break-decrement" onClick={this.decrementBreak}>
-          Break Decrement
-        </button>
-        <button id="session-decrement" onClick={this.decrementSession}>
-          Sessions Decrement
-        </button>
-        <button id="break-increment" onClick={this.incrementBreak}>
-          Break Increment
-        </button>
-        <button id="session-increment" onClick={this.incrementSession}>
-          Session Increment
-        </button>
-        <div id="time-left">
+      <div className="pomodoro">
+        <LengthControl
+          name="session"
+          length={sessionLengthInMinutes}
+          increment={this.incrementSession}
+          decrement={this.decrementSession}
+        />
+        <LengthControl
+          name="break"
+          length={breakLengthInMinutes}
+          increment={this.incrementBreak}
+          decrement={this.decrementBreak}
+        />
+        <div id="time-left" className="circle center">
           {millisecondsToHumanReadableTime(timeLeftInMilliseconds)}
         </div>
-        <button id="start_stop" onClick={this.startStop}>
-          Start/Stop
-        </button>
-        <button id="reset" onClick={this.reset}>
-          Reset
-        </button>
+        <div id="timer-label">
+          {phase === 'work' ? 'Work' : phase === 'break' ? 'Break' : 'Off'}
+        </div>
+        <TimerControl startStop={this.startStop} reset={this.reset} />
         <audio ref={this.audioPlayer} src={beep} id="beep" />
       </div>
     );

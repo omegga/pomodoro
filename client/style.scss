@@ -1,4 +1,117 @@
+@import 'reset';
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://use.fontawesome.com/releases/v5.8.2/css/all.css');
+
+$timer-size: 250px;
+$background-color-primary: #101010;
+$background-color-secondary: #121212;
+$color-primary: #999;
+$color-secondary: #bbb;
+$pomodoro-level-vertical-margin: 10px;
+$pomodoro-level-font-size: 16px;
+$length-control-button-size: 40px;
+$length-control-vertical-margin: 5px;
+$timer-control-buttons-size: 100px;
+
 body {
+  background-color: $background-color-primary;
+  color: $color-secondary;
+  font-family: 'Lato';
+}
+
+.pomodoro {
+  background-color: $background-color-secondary;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin: 77px auto;
+  padding: 15px;
+  width: 360px;
+}
+
+.circle {
+  border: 1px solid #999;
+  border-radius: 50%;
+  color: $color-secondary;
+  height: 50px;
+  line-height: 50px;
   text-align: center;
-  color: red;
+  width: 50px;
+}
+
+.square {
+  border: 1px solid #999;
+  border-radius: 5px;
+  color: $color-secondary;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  width: 50px;
+}
+
+.center {
+  margin: 0 auto;
+  width: 100%;
+}
+
+#break-label,
+#session-label,
+#break-length,
+#session-length {
+  font-size: $pomodoro-level-font-size;
+  text-align: center;
+}
+
+#timer-label {
+  color: $color-secondary;
+  font-size: $pomodoro-level-font-size;
+  margin: $pomodoro-level-vertical-margin 0 $pomodoro-level-vertical-margin 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#time-left {
+  font-size: 50px;
+  height: $timer-size;
+  line-height: $timer-size;
+  margin: $pomodoro-level-vertical-margin auto;
+  width: $timer-size;
+}
+
+.length-control {
+  &-block {
+    display: inline-block;
+    width: 50%;
+  }
+  &-label {
+    margin: $length-control-vertical-margin auto;
+  }
+  &-length {
+    margin: $length-control-vertical-margin auto;
+  }
+  &-button-wrapper {
+    display: inline-block;
+    margin: $length-control-vertical-margin auto;
+    text-align: center;
+    width: 50%;
+  }
+  &-button {
+    height: $length-control-button-size;
+    margin: 0 auto;
+    line-height: $length-control-button-size;
+    width: $length-control-button-size;
+  }
+}
+
+.timer-control {
+  &-element-wrapper {
+    display: inline-block;
+    width: 50%;
+  }
+  &-element {
+    margin: 0 auto;
+    height: $timer-control-buttons-size;
+    line-height: $timer-control-buttons-size;
+    width: $timer-control-buttons-size;
+  }
 }
